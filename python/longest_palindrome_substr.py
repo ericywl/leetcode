@@ -1,7 +1,12 @@
+"""
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+"""
+
+
 class Solution:
     def addBorders(self, s: str) -> str:
         return "#" + "#".join([c for c in s]) + "#"
-        
+
     def removeBorders(self, s: str) -> str:
         return "".join(s.split("#"))
 
