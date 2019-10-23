@@ -4,9 +4,11 @@ Given n non-negative integers a1, a2, ..., an , where each represents a point at
 Note: You may not slant the container and n is at least 2.
 """
 
+from typing import List
+
 
 class Solution:
-    def maxArea(self, height: [int]) -> int:
+    def maxArea(self, height: List[int]) -> int:
         i = 0
         j = len(height) - 1
         max_area = 0
@@ -20,7 +22,6 @@ class Solution:
         return max_area
 
 
-
 if __name__ == "__main__":
     sol = Solution()
-    print(sol.maxArea([1,2,100,1,1,1,1,1,2]))
+    print(sol.maxArea([1, 2, 100, 1, 1, 1, 1, 1, 2]))
