@@ -69,8 +69,9 @@ class Solution2:
                 summ = nums[i] + nums[j]
                 if summ not in twoSums:
                     twoSums[summ] = set()
+                # Use frozenset to ensure no duplicates like (i, j) and (j, i)
                 twoSums[summ].add(frozenset((i, j)))
-
+        # This part can be improved on, using two-for loops on the nums
         res = set()
         for k in list(twoSums.keys()):
             diff = target - k
@@ -79,6 +80,7 @@ class Solution2:
                     for b in twoSums[diff]:
                         if not any(x == y for x in a for y in b):
                             fs = a.union(b)
+                            # Use sorted tuple to ensure no duplicates
                             res.add(tuple(sorted(nums[idx] for idx in fs)))
             del twoSums[k]
         return [list(x) for x in res]
@@ -86,10 +88,6 @@ class Solution2:
 
 if __name__ == "__main__":
     sol = Solution2()
-    # print(sol.fourSum([-1, 0, 1, 2, -1, -4], -1))
-    # print(sol.fourSum([1, 0, -1, 0, -2, 2], 0))
-    # print(sol.fourSum([0, 0, 0, 0], 0))
-    # print(sol.fourSum([-3, -2, -1, 0, 0, 1, 2, 3], 0))
-    # print(sol.fourSum([-5, 5, 4, -3, 0, 0, 4, -2], 4))
-    # print(sol.fourSum([5, 5, 3, 5, 1, -5, 1, -2], 4))
+    print(sol.fourSum([0, 0, 0, 0], 0))
+    print(sol.fourSum([5, 5, 3, 5, 1, -5, 1, -2], 4))
     print(sol.fourSum([0, 4, -5, 2, -2, 4, 2, -1, 4], 12))
