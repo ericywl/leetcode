@@ -10,9 +10,7 @@ from typing import List
 
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
-        """
-        Do not return anything, modify matrix in-place instead.
-        """
+        """O(n^2) time and O(1) space"""
         n = len(matrix)
         for j in range(n // 2):
             for i in range(j, len(matrix[j]) - j - 1):

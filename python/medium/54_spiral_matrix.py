@@ -8,6 +8,7 @@ import math
 
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        """O(n^2) time and O(1) space"""
         if not matrix:
             return []
         result = []
