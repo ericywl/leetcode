@@ -13,9 +13,9 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        for j in range(len(matrix) // 2):
+        n = len(matrix)
+        for j in range(n // 2):
             for i in range(j, len(matrix[j]) - j - 1):
-                n = len(matrix)
                 tmp = matrix[j][i]
                 matrix[j][i] = matrix[n - i - 1][j]
                 matrix[n - i - 1][j] = matrix[n - j - 1][n - i - 1]
