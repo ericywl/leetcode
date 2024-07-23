@@ -2,24 +2,38 @@ package main
 
 import "testing"
 
-func arrayToTree(arr []any) *TreeNode {
-	return arrayNode(arr, 0)
+func createNodes(arr []any) []*TreeNode {
+	nodes := make([]*TreeNode, 0, len(arr))
+	for _, ele := range arr {
+		if ele == nil {
+			nodes = append(nodes, nil)
+			continue
+		}
+
+		intVal, ok := ele.(int)
+		if !ok {
+			panic("invalid array element")
+		}
+
+		nodes = append(nodes, &TreeNode{Val: intVal})
+	}
+
+	return nodes
 }
 
-func arrayNode(arr []any, idx int) *TreeNode {
-	if idx >= len(arr) || arr[idx] == nil {
+func arrayToTree(arr []any) *TreeNode {
+	nodes := createNodes(arr)
+	return arrayNode(nodes, 0)
+}
+
+func arrayNode(nodes []*TreeNode, idx int) *TreeNode {
+	if idx >= len(nodes) || nodes[idx] == nil {
 		return nil
 	}
 
-	intVal, ok := arr[idx].(int)
-	if !ok {
-		panic("invalid array element")
-	}
-
-	node := &TreeNode{Val: intVal}
-	node.Left = arrayNode(arr, (idx+1)*2-1)
-	node.Right = arrayNode(arr, (idx+1)*2)
-	return node
+	nodes[idx].Left = arrayNode(nodes, (idx+1)*2-1)
+	nodes[idx].Right = arrayNode(nodes, (idx+1)*2)
+	return nodes[idx]
 }
 
 func Test_goodNodes(t *testing.T) {
