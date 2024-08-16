@@ -8,18 +8,18 @@
 use std::collections::VecDeque;
 
 #[derive(Debug)]
-struct MonotonicallyDecreasingDeque {
+pub struct MonotonicallyDecreasingDeque {
     inner: VecDeque<i16>,
 }
 
 impl MonotonicallyDecreasingDeque {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             inner: VecDeque::new(),
         }
     }
 
-    fn push_back(&mut self, new_element: i16) {
+    pub fn push_back(&mut self, new_element: i16) {
         loop {
             match self.inner.back() {
                 Some(last_element) => {
@@ -37,16 +37,16 @@ impl MonotonicallyDecreasingDeque {
         }
     }
 
-    fn pop_front(&mut self) -> Option<i16> {
+    pub fn pop_front(&mut self) -> Option<i16> {
         self.inner.pop_front()
     }
 
-    fn len(&self) -> usize {
+    pub fn len(&self) -> usize {
         self.inner.len()
     }
 }
 
-fn beauty(arr: &[i16], k: usize) -> usize {
+pub fn beauty(arr: &[i16], k: usize) -> usize {
     let mut deque = MonotonicallyDecreasingDeque::new();
     // Initialize the deque with first k elements (first window).
     for i in 0..k {

@@ -1,1 +1,1 @@
-mod beauty_of_array;
+pub mod beauty_of_array;
