@@ -3,7 +3,7 @@
 .idea/
 
 # Node
-typescript/node_modules/
+node_modules/
 
 # Rust binary
-rust/target/
+target/
