@@ -1,4 +1,4 @@
-package medium
+package main
 
 import (
 	"sort"
@@ -9,7 +9,8 @@ import (
 // largestNumber will arrange the given list of non-negative integers such that they form the largest number
 // and returns it as a string.
 // E.g. nums = [10,2] => "210"
-//		nums = [3,30,34,5,9] => "9534330"
+//
+//	nums = [3,30,34,5,9] => "9534330"
 func largestNumber(nums []int) string {
 	strs := make([]string, 0, len(nums))
 	for _, n := range nums {

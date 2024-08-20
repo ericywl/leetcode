@@ -1,8 +1,9 @@
-package medium
+package main
 
 // longestConsecutive returns the length of the longest consecutive elements sequence given unsorted list of integers.
 // E.g. nums = [100,4,200,1,3,2] => 4
-//		nums = [0,3,7,2,5,8,4,6,0,1] => 9
+//
+//	nums = [0,3,7,2,5,8,4,6,0,1] => 9
 func longestConsecutive(nums []int) int {
 	numsMap := map[int]bool{}
 	for _, n := range nums {

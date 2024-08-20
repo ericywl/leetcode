@@ -1,11 +1,12 @@
-package medium
+package main
 
 // canJump solves the problem below:
 // You are initially positioned at the array's first index, and each element in the array represents your maximum
 // jump length at that position.
 // Return true if you can reach the last index, else false.
 // E.g. nums = [2,3,1,1,4] => true
-//		nums = [3,2,1,0,4] => false
+//
+//	nums = [3,2,1,0,4] => false
 func canJump(nums []int) bool {
 	if len(nums) == 0 {
 		return false
