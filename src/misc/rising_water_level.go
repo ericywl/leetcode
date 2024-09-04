@@ -17,7 +17,7 @@ How many years do we have before there is no longer a path from the start to the
 Directions of movement: Up, Down, Left, Right.
 */
 
-package misc
+package main
 
 func yearsLeft(grid [][]int) int {
 	width := len(grid[0])
