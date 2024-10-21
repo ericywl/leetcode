@@ -16,6 +16,33 @@ func ArrayToTreeWithNodes(arr []any) (*TreeNode, []*TreeNode) {
 	return arrayNode(nodes, 0), nodes
 }
 
+func TreeToArray(root *TreeNode) []any {
+	if root == nil {
+		return nil
+	}
+
+	var arr []any
+	queue := []*TreeNode{root}
+	for len(queue) > 0 {
+		// Dequeue node
+		node := queue[0]
+		queue = queue[1:]
+
+		if node == nil {
+			arr = append(arr, nil)
+			continue
+		}
+
+		arr = append(arr, node.Val)
+		if node.Left != nil || node.Right != nil {
+			queue = append(queue, node.Left)
+			queue = append(queue, node.Right)
+		}
+	}
+
+	return arr
+}
+
 func createNodes(arr []any) []*TreeNode {
 	nodes := make([]*TreeNode, 0, len(arr))
 	for _, ele := range arr {

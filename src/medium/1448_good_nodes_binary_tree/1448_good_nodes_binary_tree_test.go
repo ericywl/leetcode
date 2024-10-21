@@ -39,9 +39,11 @@ func Test_goodNodes(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			root := common.ArrayToTree(tt.args.arr)
-			if got := goodNodes(root); got != tt.want {
+			if got := goodNodes(common.ArrayToTree(tt.args.arr)); got != tt.want {
 				t.Errorf("goodNodes() = %v, want %v", got, tt.want)
+			}
+			if got := goodNodesIter(common.ArrayToTree(tt.args.arr)); got != tt.want {
+				t.Errorf("goodNodesIter() = %v, want %v", got, tt.want)
 			}
 		})
 	}

@@ -30,3 +30,41 @@ func goodNodesDFS(node *common.TreeNode, maxSoFar int, count int) int {
 	count = goodNodesDFS(node.Right, maxSoFar, count)
 	return count
 }
+
+type NodeWithCount struct {
+	Node     *common.TreeNode
+	MaxSoFar int
+}
+
+func goodNodesIter(root *common.TreeNode) int {
+	stack := []*NodeWithCount{{Node: root, MaxSoFar: root.Val}}
+	count := 0
+	for len(stack) > 0 {
+		// Pop node from stack
+		nc := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+
+		maxSoFar := nc.MaxSoFar
+		// GTE because we use root.Val as the starting max, and we need to count it
+		if nc.Node.Val >= nc.MaxSoFar {
+			count++
+			maxSoFar = nc.Node.Val
+		}
+
+		// Add right and left children to stack
+		if nc.Node.Right != nil {
+			stack = append(stack, &NodeWithCount{
+				Node:     nc.Node.Right,
+				MaxSoFar: maxSoFar,
+			})
+		}
+		if nc.Node.Left != nil {
+			stack = append(stack, &NodeWithCount{
+				Node:     nc.Node.Left,
+				MaxSoFar: maxSoFar,
+			})
+		}
+	}
+
+	return count
+}
